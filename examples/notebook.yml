@@ -1,0 +1,9 @@
+template: notebook
+dag_name: notebook
+version: 1
+owner: vinayak
+start_date: '2020-09-01'
+schedule_interval: '0 0 * * *'
+notebook_name: notebook.ipynb
+parameters:
+  msgs: 'Ran from Airflow at {{ execution_date }}!'

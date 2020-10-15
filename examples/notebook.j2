@@ -1,0 +1,23 @@
+# -*- coding: utf-8 -*-
+
+from airflow.models import DAG
+from airflow.operators.papermill_operator import PapermillOperator
+
+
+default_args = {
+    "owner": "{{ owner }}",
+    "start_date": "{{ start_date }}",
+}
+
+with DAG(
+    dag_id="{{ dag_name }}_v{{ version }}",
+    default_args=default_args,
+    schedule_interval="{{ schedule_interval }}",
+) as dag:
+    run_this = PapermillOperator(
+        task_id="run_notebook",
+        input_nb="{{ notebook_name }}",
+        # Replace tmp with s3:// etc. after adding support
+        output_nb="/tmp/{{ '{{' }} dag.dag_id {{ '}}' }}/{{ '{{' }} run_id {{ '}}' }}/notebook.ipynb",  # Escape Airflow macro curly braces
+        parameters={{ parameters }},
+    )
