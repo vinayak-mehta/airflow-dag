@@ -33,11 +33,17 @@ Options:
 
 If a template path is not provided, `airflow-dag` will look into the [default templates](https://github.com/vinayak-mehta/airflow-dag/blob/main/src/airflow_dag/templates).
 
-You can define your own dag templates too, and put them in a `templates` directory in Airflow's home folder. The dag yaml configs can be placed in a `configs` directory in the same home folder, and the output path can then be the Airflow dags folder. The usage will look like:
+You can define your own dag templates too, and put them in a `templates` directory in Airflow's home folder.
+
+The dag yaml configs can be placed in a `configs` directory in the same home folder, and the output path can then be the Airflow dags folder. The usage will look like:
 
 ```
 $ airflow-dag build -t airflow/templates -c airflow/configs/dag.yml -o airflow/dags
 ```
+
+## Roadmap
+
+You can check out the open issues to look at new commands that might be added in the future, and also express interest by commenting on them!
 
 ## Versioning
 
